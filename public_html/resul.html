@@ -20,7 +20,7 @@ and open the template in the editor.
 </style>
   </head>
 
-  <body onLoad="init()">
+  <body id = "body" onLoad="init()">
     <h2>You are done with your booking!</h2>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
@@ -29,12 +29,13 @@ and open the template in the editor.
 
     <!-- <h3 id="display"></h3> -->
     <script>
+     // Called on body's `onload` event
      function init() {
         // Retrieving the text input's value which was stored into localStorage
-        var mytext = localStorage.getItem("display");
+        var display = localStorage.getItem("msg");
 
         // Writing the value in the document
-        $.getElementById("body").innerHTML=display+"!";  
+        document.write("Welcome "+display+"!");
     }
 
 

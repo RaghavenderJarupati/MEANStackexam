@@ -99,7 +99,7 @@ and open the template in the editor.
           </div>
         </ng-form>
       </uib-tab>
-      
+      </uib-tabset>
   </form>
 </div>
         </div>
@@ -189,13 +189,13 @@ angular.module('ui.bootstrap.demo').controller('TabsDemoCtrl', function ($scope,
   .done(function( msg ) {
     $.ajax({
     method: "GET",
-    url: "/BookingDetails",
+    url: "/bookings",
     data: { firstname :document.getElementById("fname").value, lastname :document.getElementById("lname").value,email:document.getElementById("email").value,phone:document.getElementById("phone").value,date:document.getElementById("dt").value,dateTo:document.getElementById("dtl").value}
 })
   .done(function( msg ) {
 
-    localStorage.setItem("display", mytext) = msg;
-    return true;
+    document.getElementById("display").innerHTML=msg;
+    tosubmit(msg);
   });
     
   });
@@ -307,6 +307,17 @@ angular.module('ui.bootstrap.demo').controller('TabsDemoCtrl', function ($scope,
     return '';
   }
 });
+
+
+function tosubmit(msg) {
+            // Getting the value of your text input
+            var msg ;
+
+            // Storing the value above into localStorage
+            localStorage.setItem("msg", msg);
+
+            return true;
+        }
 
 
           </script>
