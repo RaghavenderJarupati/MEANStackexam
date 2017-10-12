@@ -25,13 +25,13 @@ and open the template in the editor.
     <div class="container container-table">
     <div class="row vertical-center-row">
         <div class="col-md-5 col-md-offset-5">
-        <div class="panel panel-primary" style="width: 400px; height: 500px;" >
+        <div class="panel panel-primary" style="width: 300px; height: 500px;" >
         <div class="panel-heading">Trident hotels</div>
         <div class="panel-body client-left-side"></div>
 <div ng-controller="TabsDemoCtrl">
     <form  name="outerForm" class="tab-form-demo" action="/index" method="post">
    <uib-tabset active="activeForm">
-      <uib-tab index="0" heading="STEP 1">
+      <uib-tab index="0" heading="Enter your details">
           <ng-form name="nestedForm" ng-submit="formNext()">
           <div class="form-group">   
 <!-- Write code for input text fields (firstname,lastname,email,phone) here-->  
@@ -56,15 +56,14 @@ and open the template in the editor.
           </div>
         </ng-form>
       </uib-tab>
-      <uib-tab index="1" heading="STEP 2" id="step2">
+      <uib-tab index="1" heading="Booking" id="step2">
          <ng-form name="nestedForm" ng-submit="formNext()" >
           <div class="form-group">
         <div class="form-group input-group">
         <div class="row">
         <div class="col-md-12 ">
-            <label>From: &nbsp; </label><select  id="selectedOption" ng-model="selectedOption" ng-options="option.name for option in options">
-            </select>   <label>To: &nbsp;</label><select ng-model="selectedOptionTo" ng-options="option1.name for option1 in optionsTo">
-</select>
+            <label>Room type: &nbsp; </label><select  id="selectedOption" ng-model="selectedOption" ng-options="option.name for option in options">
+            </select>  
 
 <!-- Write code for drowpdown list, go to below link for sample code 
 // http://www.w3schools.com/angular/tryit.asp?filename=try_ng_select_selected--> 
@@ -96,18 +95,11 @@ and open the template in the editor.
         </div>
         </div>
         </div>
-             <button type="button"   class="btn btn-primary" ng-click="formNext()" >Book now!</button>
+             <button type="button"  class="btn btn-primary" ng-click="redirect()" id="display" >Book now!</button>
           </div>
         </ng-form>
       </uib-tab>
-      <uib-tab index="2" heading="STEP 3" id="step3">
-           <ng-form  name="nestedForm" ng-submit="">
-               <h3 id="display"></h3>
-              <!-- Now display the firstname,lastname,email,phone, departure and arrival places on the selected dates--> 
-            
-           </ng-form>
-      </uib-tab>
-    </uib-tabset>   
+      
   </form>
 </div>
         </div>
@@ -122,8 +114,16 @@ and open the template in the editor.
           <!--<script  src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.min.js"></script>-->
 
           <script>
+
             angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
 angular.module('ui.bootstrap.demo').controller('TabsDemoCtrl', function ($scope, $window) {
+
+
+  $scope.redirect = function(){
+	window.location = "resul.html";
+  }
+
+
 
   //dropdown
    $scope.options = [
@@ -146,27 +146,27 @@ angular.module('ui.bootstrap.demo').controller('TabsDemoCtrl', function ($scope,
   
   ];
 
-  $scope.optionsTo = [
-    {
-      name: 'Choose room type',
-      value: 'Choose room type'
-    },
-    {
-      name: 'Single bed room',
-      value: 'Single bed room'
-    },
-    {
-      name: 'Double bed room',
-      value: 'Double bed room'
-    },
-    {
-      name: 'Premium Suit',
-      value: 'Premium Suit'
-    }
+  // $scope.optionsTo = [
+  //   {
+  //     name: 'Choose room type',
+  //     value: 'Choose room type'
+  //   },
+  //   {
+  //     name: 'Single bed room',
+  //     value: 'Single bed room'
+  //   },
+  //   {
+  //     name: 'Double bed room',
+  //     value: 'Double bed room'
+  //   },
+  //   {
+  //     name: 'Premium Suit',
+  //     value: 'Premium Suit'
+  //   }
     
-  ];
+  // ];
   $scope.selectedOption = $scope.options[0];
-  $scope.selectedOptionTo = $scope.optionsTo[0];
+  // $scope.selectedOptionTo = $scope.optionsTo[0];
   
 
   //tab index
@@ -194,8 +194,8 @@ angular.module('ui.bootstrap.demo').controller('TabsDemoCtrl', function ($scope,
 })
   .done(function( msg ) {
 
-    document.getElementById("display").innerHTML=msg;
-    
+    localStorage.setItem("display", mytext) = msg;
+    return true;
   });
     
   });

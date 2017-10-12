@@ -23,6 +23,7 @@ app.get('/index',function(req,res){
 	
 });
 
+
 //For fetching the data from the mongoDB
 app.get('/BookingDetails', function(req,res){
     var newUser = {
@@ -48,7 +49,7 @@ else{
     });
 });
 //for inserting the data into mongoDB
-app.post('/result',function(req,res){
+app.post('/index',function(req,res){
     
     console.log(req);
 	var newUser = {
